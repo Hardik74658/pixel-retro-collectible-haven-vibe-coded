@@ -1,0 +1,334 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 210 40% 98%;
+    --foreground: 223 10% 20%;
+
+    /* Card colors */
+    --card: 0 0% 100%;
+    --card-foreground: 223 10% 20%;
+
+    /* Popover colors */
+    --popover: 0 0% 100%;
+    --popover-foreground: 223 10% 20%;
+
+    /* Primary colors - Sky Blue */
+    --primary: 199 85% 57%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary colors - Soft Pink */
+    --secondary: 347 100% 94%;
+    --secondary-foreground: 340 50% 30%;
+
+    /* Muted colors */
+    --muted: 210 20% 96%;
+    --muted-foreground: 220 10% 40%;
+
+    /* Accent colors - Soft Blue */
+    --accent: 213 100% 91%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    /* Destructive colors - Bright Red */
+    --destructive: 354 85% 57%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* UI elements */
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 199 85% 57%;
+
+    /* Rounded corners */
+    --radius: 1rem;
+
+    /* Sidebar colors */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 354 85% 57%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 213 100% 91%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 199 85% 57%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    image-rendering: auto; /* Changed from pixelated to auto for less pixelated look */
+    /* Updated background to be slightly less pixelated and more subtle */
+    background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='15' height='15' fill='%23f5f5f5'/%3E%3Crect x='15' y='15' width='15' height='15' fill='%23f5f5f5'/%3E%3Crect x='15' y='0' width='15' height='15' fill='%23fcfcfc'/%3E%3Crect x='0' y='15' width='15' height='15' fill='%23fcfcfc'/%3E%3C/svg%3E");
+  }
+
+  /* Additional pixelated font styles - slightly reduced pixelation */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Press Start 2P', system-ui, sans-serif;
+    letter-spacing: -0.015em; /* Slightly reduced for better readability */
+    font-variant-numeric: tabular-nums;
+  }
+  
+  /* Add pixelated button style to all buttons */
+  button, .button, a.button {
+    @apply transition-transform active:scale-95 !important;
+  }
+}
+
+@layer components {
+  /* Pixel art borders and effects - slightly more refined */
+  .pixel-border {
+    @apply border-3 border-solid border-black relative; /* Changed from border-4 to border-3 */
+    image-rendering: auto; /* Changed from pixelated to auto */
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.25); /* Softened shadow */
+  }
+  
+  .pixel-btn {
+    @apply relative inline-flex items-center justify-center rounded-lg px-5 py-2.5 font-medium 
+    transition-all duration-200 ease-in-out border-2 border-black;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25); /* Softened shadow */
+    image-rendering: auto; /* Changed from pixelated to auto */
+  }
+  
+  .pixel-btn:hover {
+    transform: translateY(2px);
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.25);
+  }
+  
+  .pixel-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.25);
+  }
+  
+  .pixel-card {
+    @apply bg-card text-card-foreground rounded-xl overflow-hidden border-3 border-black; /* Changed from border-4 to border-3 */
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.25); /* Softened shadow */
+    transition: all 0.3s ease;
+    image-rendering: auto; /* Changed from pixelated to auto */
+  }
+  
+  .pixel-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.15);
+  }
+  
+  .pixel-nav-item {
+    @apply inline-block px-4 py-2 rounded-lg font-medium transition-all duration-200 border-2 border-transparent;
+  }
+  
+  .pixel-nav-item:hover {
+    @apply bg-accent text-accent-foreground border-black;
+    transform: translateY(-2px);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+  }
+  
+  .pixel-nav-item.active {
+    @apply bg-primary text-primary-foreground border-black;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Pixelated image - but a bit less harsh */
+  .pixel-img {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+  
+  /* Grid patterns for backgrounds - more subtle */
+  .pixel-grid-bg {
+    background-size: 25px 25px; /* Slightly larger grid */
+    background-image: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  }
+  
+  /* Container for pixel art elements */
+  .pixel-container {
+    @apply max-w-7xl mx-auto p-4 sm:p-6 lg:p-8;
+  }
+  
+  /* 3D transform helpers */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  
+  /* More pixelated styles - slightly refined */
+  .pixel-shadow {
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25); /* Softened shadow */
+  }
+  
+  .pixel-input {
+    @apply border-2 border-black rounded-md p-2 bg-white;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15); /* Softened shadow */
+  }
+  
+  .pixel-dialog {
+    @apply border-3 border-black rounded-xl; /* Changed from border-4 to border-3 */
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.25); /* Softened shadow */
+  }
+}
+
+@font-face {
+  font-family: 'PixelFont';
+  src: url('/fonts/PressStart2P-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+.font-pixel {
+  font-family: 'PixelFont', monospace;
+  letter-spacing: 0.04em;
+}
+
+.pixel-image {
+  image-rendering: pixelated;
+  border-radius: 0.5rem;
+  background: #f6f6fa;
+}
+
+.pixel-btn {
+  font-family: 'PixelFont', monospace;
+  border: 2px solid #222;
+  box-shadow: 0 2px 0 #000, 0 4px 8px rgba(0,0,0,0.08);
+  transition: transform 0.1s, background 0.2s, box-shadow 0.2s;
+}
+.pixel-btn:active, .animate-pixel-press:active {
+  transform: scale(0.96) translateY(2px);
+  box-shadow: 0 1px 0 #000;
+}
+.pixel-border {
+  border: 2px solid #222;
+}
+.glow {
+  box-shadow: 0 0 8px 2px #fff7, 0 0 2px #fff;
+}
+.animate-slide-in {
+  animation: slide-in 0.3s cubic-bezier(.4,2,.6,1) both;
+}
+@keyframes slide-in {
+  from { opacity: 0; transform: translateX(40px);}
+  to { opacity: 1; transform: translateX(0);}
+}
+.animate-pixel-blink {
+  animation: pixel-blink 1.2s steps(2) infinite;
+}
+@keyframes pixel-blink {
+  0%, 100% { opacity: 1;}
+  50% { opacity: 0.5;}
+}
+.animate-pixel-bounce {
+  animation: pixel-bounce 1s infinite cubic-bezier(.4,2,.6,1);
+}
+@keyframes pixel-bounce {
+  0%, 100% { transform: translateY(0);}
+  50% { transform: translateY(-12px);}
+}
+.animate-bounce-on-hover:hover {
+  animation: pixel-bounce 0.7s;
+}
+.pixel-bg {
+  background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+  min-height: 100vh;
+  /* Optional: add subtle SVG or floating pixel elements here */
+}
+
+/* Accessibility: focus ring for all interactive elements */
+:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+}
+
+/* Global keyframes for pixel animations */
+@keyframes pixel-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pixel-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes pixel-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04); /* Slightly reduced from 1.05 */
+  }
+}
+
+@keyframes pixel-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Google Fonts for Pixelated Typography */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
